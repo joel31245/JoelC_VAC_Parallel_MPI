@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include "mpi.h"
 #include <math.h>
+#include <time.h>
 
 int main(int argv, char **argc){
 
@@ -63,12 +64,11 @@ int main(int argv, char **argc){
             printf("%d is a Prime Number (Rank: %d)\n", i,rank);
     }
 
-    //MPI_Barrier(MPI_COMM_WORLD);
+    MPI_Barrier(MPI_COMM_WORLD);
     tfinish = MPI_Wtime();
-    printf("(Rank %d) took %lf seconds\n", tfinish-tstart,rank);
+    printf("(Rank %d) took %lf seconds\n", rank,tfinish-tstart);
 
 	MPI_Finalize();
-
 
 
 	return 0;
